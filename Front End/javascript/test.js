@@ -38,17 +38,24 @@ document.querySelector("#logo").addEventListener("click", function(e){
 
 document.querySelector("#logo").addEventListener("click", function(e){
     fetch('http://localhost:3000/test-post', {
-	method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-    },
-    body: JSON.stringify({
-  	    name: 'Kieran',
-        email: 'machale@gmail.com'
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept' : 'application/json'
+        },
+        body: JSON.stringify({
+            name: 'John Doe',
+            location: 'Dublin, Ireland',
+            email: 'johndoe@gmail.com',
+            hobbies : ['football', 'web development', 'reading'],
+            address: {
+                street: 'Avondale Rd.',
+                county: 'Dublin',
+                houseNo: 14
+            }
+        })
     })
-	})
-	.then(res => res.json())
+    .then(res => res.json())
     .then(data => console.log(data))
     .catch(err => console.log(err));
 });
