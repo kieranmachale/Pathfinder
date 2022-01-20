@@ -1,0 +1,23 @@
+{
+  "name": "pathfinder",
+  "version": "1.0.0",
+  "description": "Web application for configuring and launching Arduino navigation projects",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kieranmachale/Pathfinder.git"
+  },
+  "author": "Kieran Mac Hale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kieranmachale/Pathfinder/issues"
+  },
+  "homepage": "https://github.com/kieranmachale/Pathfinder#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2"
+  }
+}
