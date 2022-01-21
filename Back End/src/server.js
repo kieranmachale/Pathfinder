@@ -2,8 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const server = express();
+
 const PORT = process.env.PORT || 3000;
-const url = process.env.URL || "http://localhost";
+const URL = process.env.URL || "http://localhost";
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
@@ -11,7 +12,8 @@ server.use(bodyParser.json());
 
 /* cors settings */
 let corsOptions = {
-    origin: [url + ":" + 8080, '*']
+    origin: [URL + ":" + 8080, '*'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
 }
 
 let allowCrossDomain = function(req, res, next) {
@@ -25,26 +27,26 @@ server.use(cors(corsOptions));
 // ----------------------------------------------------------------
 
 /* Endpoint to check server is active */
-server.get("/", cors(), (req, res) => {
-    res.json('Server is responsive').status(200);
+server.get("/api/", cors(), (req, res) => {
+    res.json('Server is running').status(200);
 });
 
 /* Endpoint to check fetch API GET requests */
-server.get("/test-get", cors(), (req, res) => {
+server.get("/api/test-get", cors(), (req, res) => {
     const data = {obj: {id:1, name:'obj1'}, obj2: {id:2, name:'obj2'}};
     res.json(data).status(200);
 });
 
 
 /* Endpoint to check fetch API POST requests */
-server.post("/test-post", cors(), (req, res) => {
+server.post("/api/test-post", cors(), (req, res) => {
     console.log(req.body);
     res.json(req.body).status(200);
 });
 
 /* Start server */
 server.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
+    console.log(`Server running on: ${URL}:${PORT}`);
 });
 
 module.exports = server;
