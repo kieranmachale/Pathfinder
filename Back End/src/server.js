@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require("body-parser");
+const path = require('path');
 const server = express();
 
 const PORT = process.env.PORT || 3000;
@@ -34,6 +35,14 @@ require("./routes/arduino.routes")(server);
 
 // ----------------------------------------------------------------
 
+/* Checking connection to ElephantSQL database */
+const db = require('./models/index');
+db.authenticate()
+    .then(() => console.log('Database connected'))
+    .catch(err => {console.log(err)});
+
+// ----------------------------------------------------------------
+
 /* Endpoint to check server is active */
 server.get("/api/", cors(), (req, res) => {
     res.json('Server is running').status(200);
@@ -44,7 +53,6 @@ server.get("/api/test-get", cors(), (req, res) => {
     const data = {obj: {id:1, name:'obj1'}, obj2: {id:2, name:'obj2'}};
     res.json(data).status(200);
 });
-
 
 /* Endpoint to check fetch API POST requests */
 server.post("/api/test-post", cors(), (req, res) => {
