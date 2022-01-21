@@ -26,6 +26,14 @@ server.use(cors(corsOptions));
 
 // ----------------------------------------------------------------
 
+/* Routes */
+require("./routes/user.routes")(server);
+require("./routes/auth.routes")(server);
+require("./routes/projects.routes")(server);
+require("./routes/arduino.routes")(server);
+
+// ----------------------------------------------------------------
+
 /* Endpoint to check server is active */
 server.get("/api/", cors(), (req, res) => {
     res.json('Server is running').status(200);
