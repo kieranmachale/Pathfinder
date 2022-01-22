@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: 'manny.db.elephantsql.com',
-    USER: 'jbgzjaqu',
-    PASSWORD: 'VHCzTaZT2y7ELDbDoaPywR7xNoGTQXFz',
-    DB: 'jbgzjaqu',
+    HOST: 'tyke.db.elephantsql.com',
+    USER: 'dsozkvfl',
+    PASSWORD: 'xoWvtupsY5hC9GZX92mdkgN3QWcXHMex',
+    DB: 'dsozkvfl',
     dialect: 'postgres',
     operatorAliases: '0',
     pool: {
