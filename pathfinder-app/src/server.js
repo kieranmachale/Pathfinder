@@ -9,6 +9,13 @@ const URL = process.env.URL || "http://localhost";
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
+
+// Setting up relative paths for static files
+server.use(express.static(__dirname + "/public/css"));
+server.use(express.static(__dirname + "/public/js"));
+server.use(express.static(__dirname + "/public/images"));
+server.use(express.static(__dirname + "/public/html"));
+
 // ---------------------------------------------------------------
 
 /* cors settings */
@@ -60,6 +67,12 @@ server.post("/api/test-post", cors(), (req, res) => {
     console.log(req.body);
     res.json(req.body).status(200);
 });
+
+server.get("/check", (req, res) => {
+    res.sendFile(__dirname + "/public/html/index.html");
+});
+
+// ---------------------------------------------------------------
 
 /* Start server */
 server.listen(PORT, () => {
