@@ -2,7 +2,7 @@
 
 document.querySelector("#btn1").addEventListener("click", function(e){
     //console.log("Button clicked");
-    fetch('http://localhost:3000/test-get', {
+    fetch('http://localhost:3000/api/test-get', {
         method: 'GET'
         /*,
         body: JSON.stringify({
@@ -37,7 +37,7 @@ document.querySelector("#logo").addEventListener("click", function(e){
 });*/
 
 document.querySelector("#logo").addEventListener("click", function(e){
-    fetch('http://localhost:3000/test-post', {
+    fetch('http://localhost:3000/api/test-post', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
