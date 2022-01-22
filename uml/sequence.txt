@@ -1,9 +1,0 @@
-@startuml
-participant client as Client
-participant api as REST_API
-participant port as Serial_Port
-participant uno as MicroController
-
-client -> api : 'POST localhost:3000/api/begin'
-
-@enduml
