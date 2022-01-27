@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Project = require('../models/project.model');
 
 module.exports = projectRouter => {
 
@@ -10,8 +11,13 @@ module.exports = projectRouter => {
         next();
     });
 
+    // Return all projects
     router.get("/",(req, res) => {
-        res.send('Inside project routes!').status(200);
+        Project.findAll()
+            .then(data => {
+                res.send(data).status(200);
+            })
+            .catch(err => {console.log(err)});
     });
 
     projectRouter.use('/api/project', router);

@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const db = require('../models/index');
+const User = require('../models/users.model');
 
 module.exports = userRouter => {
 
@@ -12,7 +14,12 @@ module.exports = userRouter => {
 
     // Return all the users
     router.get("/",(req, res) => {
-        res.send('Inside user routes!').status(200);
+        User.findAll()
+            .then(user => {
+                //console.log(user);
+                res.send(user).status(200);
+            })
+            .catch(err => {console.log(err)});
     });
 
     userRouter.use('/api/user', router);

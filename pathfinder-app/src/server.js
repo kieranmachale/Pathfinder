@@ -49,6 +49,8 @@ db.authenticate()
     .then(() => console.log('Database connected'))
     .catch(err => {console.log(err)});
 
+
+
 // ----------------------------------------------------------------
 
 /* Endpoint to check server is active */
