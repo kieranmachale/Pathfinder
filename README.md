@@ -111,7 +111,7 @@
   </td>
 </tr>
 <tr>
-  <td>newProject/</td>
+  <td>project/</td>
   <td>POST</td>
   <td>YES</td>
   <td>
