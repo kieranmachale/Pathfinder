@@ -69,8 +69,42 @@
         Remove a single user.
     </td>
 </tr>
+</table>
+
+<table style="caption-side: top">
+<caption>Operations on project resources</caption>
 <tr>
-  <td>createProject/</td>
+    <th>URI</th>
+    <th>Method</th>
+    <th>Auths?</th>
+    <th>Operation</th>
+</tr>
+<tr>
+  <td>project/{userId}</td>
+  <td>GET</td>
+  <td>YES</td>
+  <td>
+      Return all the projects for a single user
+  </td>
+</tr>
+<tr>
+  <td>project/{userId}/{projectId}</td>
+  <td>GET</td>
+  <td>YES</td>
+  <td>
+      Return a single reminder created by a user
+  </td>
+</tr>
+<tr>
+  <td>project/</td>
+  <td>GET</td>
+  <td>NO</td>
+  <td>
+      Return all public projects
+  </td>
+</tr>
+<tr>
+  <td>newProject/</td>
   <td>POST</td>
   <td>YES</td>
   <td>
@@ -78,10 +112,19 @@
   </td>
 </tr>
 <tr>
-  <td>startScan/</td>
-  <td>POST</td>
+  <td>project/{projectId}</td>
+  <td>PATCH</td>
   <td>YES</td>
   <td>
-      Launch the Arduino program and collect sensor data
+      Update a project's specifications
   </td>
 </tr>
+<tr>
+  <td>project/{projectId}</td>
+  <td>DELETE</td>
+  <td>YES</td>
+  <td>
+      Remove a project created by the user
+  </td>
+</tr>
+</table>
