@@ -1,5 +1,12 @@
 # Pathfinder
 
+<h2>Instructions for use<h2>
+    <ol>
+        <li>Navigate to the root directory</li>
+        <li>Run 'npm i'</li>
+        <li>Run 'npm start' or 'npm run dev'</li>
+    </ol>
+
 <br>
 <table style="caption-side: top">
 <caption>Operations on the auth resources </caption>
