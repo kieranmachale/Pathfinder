@@ -3,12 +3,16 @@ const User = require('../models/users.model');
 /* Return all users from the database */
 exports.findAll = (req, res) => {
     console.log("Inside user controller");
-    User.findAll({attributes: ["uid", "username", "email", "password", "createdat", "updatedat"]})
+    User.findAll({attributes: [
+        "uid", "username", "email", "password", "createdat", "updatedat"
+    ]})
         .then(user => {
             res.send(user).status(200);
         })
         .catch(err => {
-            console.log(err);
+            res.status(500).send({
+                message: err.message || "Error occurred when retreiving the users"
+            })
         })
 }
 // -----------------------------------------------------------------------------------------------
@@ -29,7 +33,7 @@ exports.findOne = (req, res) => {
         })
         .catch(err => {
             res.status(500).send({
-                message: "Error retrieving user with the id " + uid
+                message: err.message || "Error retrieving user with the id " + uid
             });
         });
 }
@@ -55,7 +59,7 @@ exports.delete = (req, res) => {
         })
         .catch(err => {
             res.send({
-                message: "Could not delete the user with the id " + id
+                message: err.message ||  "Could not delete the user with the id " + id
             })
         });
 }

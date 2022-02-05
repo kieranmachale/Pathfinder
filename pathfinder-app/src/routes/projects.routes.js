@@ -19,19 +19,19 @@ module.exports = projectRouter => {
     router.get("/public", projectController.findPublic);
 
     // Return all projects for a single user
-    router.get("/:uid");
+    router.get("/:uid", projectController.findAllForUser);
 
     // Return a single project
-    router.get("/:id");
+    router.get("/:uid/:id", projectController.findOne);
 
     // Create a new project
     router.post("/", projectController.create);
 
     // Update a project
-    router.patch("/:id");
+    router.patch("/:id", projectController.update);
 
     // Delete a project
-    router.delete("/:id");
+    router.delete("/:id", projectController.delete);
 
     projectRouter.use('/api/project', router);
 }
