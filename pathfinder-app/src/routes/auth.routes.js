@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const authenticationController = require('../controllers/auth.controller');
 
 module.exports = authenticationRouter => {
 
@@ -13,6 +14,12 @@ module.exports = authenticationRouter => {
     router.get("/",(req, res) => {
         res.send('Inside auth routes!').status(200);
     });
+
+    // Register a new user
+    router.post("/register", authenticationController.register);
+
+    // Login to user account
+    router.post("/login", authenticationController.login);
 
     authenticationRouter.use('/api/auth', router);
 }
