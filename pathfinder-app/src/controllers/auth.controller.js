@@ -39,6 +39,7 @@ exports.register = (req, res) => {
             // Login
             let response = {
                 uid: data.uid,
+                username: data.username,
                 email: data.email,
                 jwt: accessToken
             }

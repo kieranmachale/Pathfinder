@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Project = require('../models/project.model');
 const projectController = require('../controllers/project.controller');
+const authJWT = require('../middleware/authJWT');
 
 module.exports = projectRouter => {
 
@@ -13,25 +14,25 @@ module.exports = projectRouter => {
     });
 
     // Return all projects
-    router.get("/", projectController.findAll);
+    router.get("/", [authJWT.verifyToken], projectController.findAll);
 
     // Return all public projects
     router.get("/public", projectController.findPublic);
 
     // Return all projects for a single user
-    router.get("/:uid", projectController.findAllForUser);
+    router.get("/:uid", [authJWT.verifyToken], projectController.findAllForUser);
 
     // Return a single project
-    router.get("/:uid/:id", projectController.findOne);
+    router.get("/:uid/:id", [authJWT.verifyToken], projectController.findOne);
 
     // Create a new project
-    router.post("/", projectController.create);
+    router.post("/", [authJWT.verifyToken], projectController.create);
 
     // Update a project
-    router.patch("/:id", projectController.update);
+    router.patch("/:id", [authJWT.verifyToken], projectController.update);
 
     // Delete a project
-    router.delete("/:id", projectController.delete);
+    router.delete("/:id", [authJWT.verifyToken], projectController.delete);
 
     projectRouter.use('/api/project', router);
 }
