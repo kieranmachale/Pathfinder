@@ -1,5 +1,9 @@
 const User = require('../models/users.model');
+const dotenv = require('dotenv');
+const config = require('../config/auth.config');
 let bcrypt = require('bcryptjs');
+let jwt = require('jsonwebtoken');
+let accessTokenTimeout = 86400;
 
 // Register new user
 exports.register = (req, res) => {
@@ -7,6 +11,7 @@ exports.register = (req, res) => {
     // Validate request
     if (!req.body.username || !req.body.email || !req.body.password) {
         return res.status(400).json({message: "Required data must be present"});
+    // Regular expression to check validity of email address
     } else if (!(/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)])/.test(req.body.email))) {
         return res.status(400).json({message: "Email address is not valid!"});
     }
@@ -25,14 +30,20 @@ exports.register = (req, res) => {
         password: bcrypt.hashSync(req.body.password, 8),
     })
         .then(data => {
+
+            // Sign web token
+            let accessToken = jwt.sign({id: data.uid}, config.ACCESS_TOKEN_SECRET, {
+                expiresIn: accessTokenTimeout // 24 hours
+            });
+
             // Login
             let response = {
                 uid: data.uid,
                 email: data.email,
-                //jwt: token
+                jwt: accessToken
             }
             // Return data
-            res.send(response);
+            res.send(response).status(201);
         })
         .catch(error => {
             res.status(500).send({

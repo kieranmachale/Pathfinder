@@ -22,5 +22,8 @@ module.exports = authenticationRouter => {
     // Login to user account
     router.post("/login", authenticationController.login);
 
+    // Logout a user
+    router.post("/logout");
+
     authenticationRouter.use('/api/auth', router);
 }
