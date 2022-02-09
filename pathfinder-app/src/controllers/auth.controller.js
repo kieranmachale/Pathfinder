@@ -76,12 +76,16 @@ exports.login = (req, res) => {
                 return res.status(401).send({message: "Invalid email or password."});
             }
 
+            let accessToken = jwt.sign({id: data.uid}, config.ACCESS_TOKEN_SECRET, {
+                expiresIn: accessTokenTimeout // 24 hours
+            });
+
             // Save JWT to whitelist
             res.status(200).send({
                 id: user.uid,
                 username: user.username,
                 email: user.email,
-                //jwt: token
+                jwt: accessToken
             });
 
         })
