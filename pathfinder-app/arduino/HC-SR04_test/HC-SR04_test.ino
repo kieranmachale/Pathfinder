@@ -16,6 +16,7 @@
 // Setting the digital I/O pins on the arduino board
 byte trigPin = 7;
 byte echoPin = 6;
+byte LED = 5;
 int index = 1;
 int angle = 1;
 
@@ -31,6 +32,8 @@ void setup () {
   // Runs once at beginning of execution
   Serial.begin(BAUD);
   HCSR04.begin(trigPin, echoPin);
+  clearSerialMonitor();
+  pinMode(LED, OUTPUT);
 }
 
 void loop () {
@@ -60,5 +63,14 @@ void loop () {
   delay(FREQUENCY);
 
   // TODO: Write data from serial monitor to CSV file
+  digitalWrite(LED, HIGH);
+  delay(1000);
+  digitalWrite(LED, LOW);
   
+}
+
+void clearSerialMonitor(){
+  for(int i = 0; i < 80; i++){
+    Serial.println("");
+  }
 }

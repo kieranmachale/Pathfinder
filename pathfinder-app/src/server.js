@@ -74,6 +74,10 @@ server.get("/check", (req, res) => {
     res.sendFile(__dirname + "/public/html/index.html");
 });
 
+server.get("/home", (req, res) => {
+    res.sendFile(__dirname + "/public/html/home.html")
+});
+
 // ---------------------------------------------------------------
 
 /* Start server */

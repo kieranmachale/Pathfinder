@@ -1,0 +1,181 @@
+.navbar {
+  position: absolute;
+  background: transparent !important;
+  width: 100%;
+  z-index: 10;
+  animation: fadeIn 2s;
+  /*border-bottom: 1px solid rgba(255, 255, 255, 0.3);*/
+}
+
+.navbar-nav {
+  margin-right: 10px;
+}
+
+.navbar-brand {
+  color: #fff !important;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.search-bar {
+  position: absolute;
+  z-index: 1;
+  top: 120px;
+  width: 100%;
+  animation: fadeIn 2s;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.active {
+  color: rgb(141, 141, 141) !important;
+}
+
+.nav-link:hover {
+  color: rgba(215, 215, 215) !important;
+}
+
+.input-group > .form-control {
+  margin-right: 5px;
+}
+
+.input-group > .form-control:focus {
+  box-shadow: none;
+}
+
+.btn-link {
+  margin-left: 5px;
+}
+
+.btn-outline-secondary {
+  border-left: 1px solid #000;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  border-radius: 0;
+}
+
+.carousel-inner {
+  height: 90vh;
+}
+
+.welcome {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  margin-top: 50px;
+}
+
+.navbar-toggler {
+  outline: none;
+}
+
+.fab:hover {
+  cursor: pointer;
+}
+
+.phone {
+  color: deepskyblue;
+}
+
+.env {
+  color: orange;
+}
+
+.vid {
+  color: red;
+}
+
+button:focus,
+button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+footer a {
+  text-decoration: none !important;
+}
+
+i {
+  padding-right: 7px;
+}
+
+img {
+  filter: brightness(40%);
+}
+
+iframe {
+  display: block;
+  margin: auto;
+  padding-top: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive CSS */
+@media (max-width: 340px) {
+  .sb,
+  .sub {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+  }
+  .smallscreen {
+    display: none !important;
+  }
+  .carousel-control-next {
+    display: none !important;
+  }
+  .carousel-control-prev {
+    display: none !important;
+  }
+  form {
+    display: block !important;
+    width: 70% !important;
+    margin: 0 auto !important;
+  }
+  form input {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .carousel-inner {
+    height: auto !important;
+  }
+  form {
+    display: block !important;
+    width: 80% !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    background: #000 !important;
+    border: none !important;
+    font-size: large;
+  }
+  .nav-link {
+    padding-left: 12px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+}

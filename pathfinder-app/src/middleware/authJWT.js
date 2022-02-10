@@ -5,12 +5,12 @@ const config = require("../config/auth.config");
 verifyToken = (req, res, next) => {
 
     let accessToken = req.headers["token"];
-    // check token existence
+    // Check token existence
     if (!accessToken) {
         return res.status(403).send({message: "No token provided!"});
     }
 
-    // verify token
+    // Verify token
     jwt.verify(accessToken, config.ACCESS_TOKEN_SECRET, (err, decoded) => {
         // Invalid token
         if (err) {

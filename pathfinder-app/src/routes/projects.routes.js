@@ -8,7 +8,7 @@ module.exports = projectRouter => {
     projectRouter.use(function (req, res, next) {
         res.header(
             "Access-Control-Allow-Headers",
-            "Origin, Content-Type, Accept"
+            "token, Origin, Content-Type, Accept"
         );
         next();
     });
