@@ -59,3 +59,35 @@ document.querySelector("#logo").addEventListener("click", function(e){
     .then(data => console.log(data))
     .catch(err => console.log(err));
 });
+
+// Login 
+async function loginUser() {
+    const response = fetch('http://localhost:3000/api/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept' : 'application/json'
+        },
+        body: JSON.stringify({
+            uid: 13,
+            email: "demo@demo.com",
+            password: "demopass"
+        })
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        if(!data.jwt){ // No token returned from server
+        console.log(data.message);
+        // Display error message to user
+        document.querySelector("#err").innerHTML+=data.message;
+      }else{
+        console.log(data.jwt);
+      }
+    })
+    .catch(err => {
+        console.log(err.message || "Error occurred while logging user in");
+    });
+    
+}

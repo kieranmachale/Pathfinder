@@ -16,7 +16,7 @@
 // Setting the digital I/O pins on the arduino board
 byte trigPin = 7;
 byte echoPin = 6;
-byte LED = 5;
+int LED = 8;
 int index = 1;
 int angle = 1;
 
@@ -51,10 +51,10 @@ void loop () {
   
   // Printing data to serial monitor
   Serial.print(index);
-  Serial.print(",");
+  Serial.print(",\t\t");
   Serial.print((int)distances[0]);
   Serial.print("cm");
-  Serial.print(",");
+  Serial.print(",\t\t");
   Serial.println(angle);
 
   index += 1;
@@ -63,9 +63,11 @@ void loop () {
   delay(FREQUENCY);
 
   // TODO: Write data from serial monitor to CSV file
-  digitalWrite(LED, HIGH);
-  delay(1000);
-  digitalWrite(LED, LOW);
+  if((int)distances[0] < 8){
+    digitalWrite(LED, HIGH);
+  } else {
+    digitalWrite(LED, LOW);
+  }
   
 }
 
