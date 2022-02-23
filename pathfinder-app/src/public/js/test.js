@@ -36,23 +36,19 @@ document.querySelector("#logo").addEventListener("click", function(e){
     }).catch(err => console.log(err));
 });*/
 
-document.querySelector("#logo").addEventListener("click", function(e){
-    fetch('http://localhost:3000/api/test-post', {
+document.querySelector("#btn1").addEventListener("click", function(e){
+    let email = document.querySelector("#email").value;
+    let password = document.querySelector("#pass").value;
+
+    fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Accept' : 'application/json'
         },
         body: JSON.stringify({
-            name: 'John Doe',
-            location: 'Dublin, Ireland',
-            email: 'johndoe@gmail.com',
-            hobbies : ['football', 'web development', 'reading'],
-            address: {
-                street: 'Avondale Rd.',
-                county: 'Dublin',
-                houseNo: 14
-            }
+            email: email,
+            password: password
         })
     })
     .then(res => res.json())

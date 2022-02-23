@@ -75,7 +75,11 @@ server.get("/check", (req, res) => {
 });
 
 server.get("/home", (req, res) => {
-    res.sendFile(__dirname + "/public/html/home.html")
+    res.sendFile(__dirname + "/public/html/home.html");
+});
+
+server.get("/register", (req, res) => {
+    res.sendFile(__dirname + "/public/html/registration.html");
 });
 
 // ---------------------------------------------------------------

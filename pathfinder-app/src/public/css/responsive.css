@@ -89,6 +89,34 @@
   color: red;
 }
 
+#login-home {
+  border: 2px solid #fff;
+  border-radius: 20px;
+  padding: 0.2rem 1rem !important;
+  line-height: 30px;
+  margin-right: 7px;
+}
+
+#login-home:hover {
+  background-color: #9746f2 !important;
+  border: 2px solid #9746f2 !important;
+  color: white;
+}
+
+#signup-home {
+  background-color: #9746f2 !important;
+  border: 2px solid #9746f2 !important;
+  border-radius: 20px;
+  padding: 0.2rem 1rem !important;
+  line-height: 30px;
+}
+
+#signup-home:hover {
+  background-color: #fff !important;
+  border: 2px solid #fff !important;
+  color: #9746f2 !important;
+}
+
 button:focus,
 button:active {
   outline: none !important;
@@ -174,6 +202,13 @@ iframe {
   }
   .nav-link {
     padding-left: 12px !important;
+  }
+  #login-home {
+    width: 25%;
+    margin-bottom: 10px;
+  }
+  #signup-home {
+    width: 25%;
   }
 }
 
