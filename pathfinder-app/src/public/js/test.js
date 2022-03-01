@@ -1,22 +1,5 @@
 /* Example of a HTTP request using fetch API */
 
-document.querySelector("#btn1").addEventListener("click", function(e){
-    //console.log("Button clicked");
-    fetch('http://localhost:3000/api/test-get', {
-        method: 'GET'
-        /*,
-        body: JSON.stringify({
-            name: document.querySelector("#email").value,
-            password: document.querySelector("#pass").value
-        })*/
-    }).then(res => {
-        console.log(res.status);
-        return res.json();
-    }).then(data => {
-        console.log(data);
-    }).catch(err => console.log(err));
-});
-
 /*
 document.querySelector("#logo").addEventListener("click", function(e){
     fetch('http://localhost:3000/blu', {
@@ -36,7 +19,7 @@ document.querySelector("#logo").addEventListener("click", function(e){
     }).catch(err => console.log(err));
 });*/
 
-document.querySelector("#btn1").addEventListener("click", function(e){
+/*document.querySelector("#btn1").addEventListener("click", function(e){
     let email = document.querySelector("#email").value;
     let password = document.querySelector("#pass").value;
 
@@ -54,10 +37,10 @@ document.querySelector("#btn1").addEventListener("click", function(e){
     .then(res => res.json())
     .then(data => console.log(data))
     .catch(err => console.log(err));
-});
+});*/
 
 // Login 
-async function loginUser() {
+/*async function loginUser() {
     const response = fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: {
@@ -86,4 +69,4 @@ async function loginUser() {
         console.log(err.message || "Error occurred while logging user in");
     });
     
-}
+}*/

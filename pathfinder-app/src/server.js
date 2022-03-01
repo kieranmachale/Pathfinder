@@ -70,12 +70,9 @@ server.post("/api/test-post", cors(), (req, res) => {
     res.json(req.body).status(200);
 });
 
-server.get("/check", (req, res) => {
-    res.sendFile(__dirname + "/public/html/index.html");
-});
-
-server.get("/home", (req, res) => {
-    res.sendFile(__dirname + "/public/html/home.html");
+/* Web page endpoints */
+server.get("/login", (req, res) => {
+    res.sendFile(__dirname + "/public/html/login.html");
 });
 
 server.get("/register", (req, res) => {
