@@ -4,8 +4,10 @@ document.querySelector("#btn1").addEventListener("click", function(e){
     let email = document.querySelector("#email").value;
     let password = document.querySelector("#pass").value;
 
+    location.href ="http://localhost:3000/profile";
+
     if(!email || !password){
-        alert("Content cannot be missing!");
+        //alert("Content cannot be missing!");
     }
     else{
         loginUser(email, password);

@@ -79,6 +79,10 @@ server.get("/register", (req, res) => {
     res.sendFile(__dirname + "/public/html/registration.html");
 });
 
+server.get("/profile", (req, res) => {
+    res.sendFile(__dirname + "/public/html/profile.html");
+});
+
 // ---------------------------------------------------------------
 
 /* Start server */
