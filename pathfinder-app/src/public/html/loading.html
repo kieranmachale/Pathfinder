@@ -17,8 +17,16 @@
     <link rel="manifest" href="site.webmanifest">
 
     <title>Pathfinder &bull; Register</title>
+    <style>
+        .load{
+            padding:50px;
+            margin:auto;
+            width:60%;
+            text-align:center;
+        }
+    </style>
   </head>
-  <body>
+  <body onload="redirect()">
 
     <!-- Navbar -->
     <nav class="navbar navbar-dark bg-dark">
@@ -47,48 +55,12 @@
           </div>
 
     </nav>
-      
-      <nav class="navbar navbar-dark bg-primary">
-        <!-- Navbar content -->
-      </nav>
-
-    <!-- Registration Form -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="signup-form">
-                    <form action="" class="mt-5 border p-4 bg-light shadow">
-                        <h4 class="mb-5 text-secondary">Create Your Account</h4>
-                        <div class="row">
-                            <div class="mb-3 col-md-6">
-                                <label>Email<span class="text-danger">*</span></label>
-                                <input id="emailReg" type="text" name="fname" class="form-control" placeholder="Enter Email">
-                            </div>
-    
-                            <div class="mb-3 col-md-6">
-                                <label>Username<span class="text-danger">*</span></label>
-                                <input id="usernameReg" type="text" name="Lname" class="form-control" placeholder="Enter Username">
-                            </div>
-    
-                            <div class="mb-3 col-md-12">
-                                <label>Password<span class="text-danger">*</span></label>
-                                <input id="passwordReg" type="password" name="password" class="form-control" placeholder="Enter Password">
-                            </div>
-                            <div class="mb-3 col-md-12">
-                                <label>Confirm Password<span class="text-danger">*</span></label>
-                                <input id="confirmPassword" type="password" name="confirmpassword" class="form-control" placeholder="Confirm Password">
-                            </div>
-                            <div class="col-md-12">
-                               <button class="btn btn-primary float-end" id="signup">Sign Up</button>
-                            </div>
-                        </div>
-                    </form>
-                    <p class="text-center mt-3 text-secondary">If you have account, Please <a href="/login" style="text-decoration:none;">Login Now</a></p>
-                </div>
-            </div>
-        </div>
+    <div class="load">
+        <h1>Registration Complete!</h1>
+        <h3>You will be redirected to login in a moment...</h3>
+        <img src="loading.gif">
     </div>
-
+    
 
     <!-- Footer -->
     <footer class="page-footer font-small special-color-dark pt-4">
@@ -142,7 +114,20 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="reg.js"></script>
+    <script>
+        /* Registration redirect to login page*/
+        function redirect(){
+            var counter = 0;
+            setInterval(function(){    
+                // User will be redirected to login page after 3 seconds
+                if(counter == 3){
+                    document.location.href="/login";
+                }
+                counter += 1;
+            },1000);
+        }
+
+    </script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

@@ -4,8 +4,6 @@ document.querySelector("#btn1").addEventListener("click", function(e){
     let email = document.querySelector("#email").value;
     let password = document.querySelector("#pass").value;
 
-    location.href ="http://localhost:3000/profile";
-
     if(!email || !password){
         //alert("Content cannot be missing!");
     }
@@ -13,6 +11,7 @@ document.querySelector("#btn1").addEventListener("click", function(e){
         loginUser(email, password);
     }
 });
+
 // -----------------------------------------------------------------------------------------------
 
 async function loginUser(email, password) {
@@ -31,10 +30,18 @@ async function loginUser(email, password) {
         return res.json();
     })
     .then(data => {
-        let accessToken = data.jwt;
-        let userId = data.id;
-        window.localStorage.setItem("token", accessToken);
-        window.localStorage.setItem("uid", userId);
+        if(data.jwt){
+            let accessToken = data.jwt;
+            let userId = data.id;
+            window.localStorage.clear();
+            window.localStorage.setItem("token", accessToken);
+            window.localStorage.setItem("uid", userId);
+            location.href ="/profile";
+        }else{
+            //Handle error
+            location.href="/login"
+        }
+        
         /* Redirect to profile page */
         //location.href = 'http://localhost:3000';
     })
@@ -43,3 +50,5 @@ async function loginUser(email, password) {
     });
     
 }
+
+// -----------------------------------------------------------------------------------------------

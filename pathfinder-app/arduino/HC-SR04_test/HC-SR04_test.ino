@@ -14,8 +14,8 @@
 #define BAUD 9600
 
 // Setting the digital I/O pins on the arduino board
-byte trigPin = 7;
-byte echoPin = 6;
+byte trigPin = 8;
+byte echoPin = 9;
 int LED = 8;
 int index = 1;
 int angle = 1;

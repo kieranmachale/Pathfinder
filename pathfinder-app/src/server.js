@@ -83,6 +83,10 @@ server.get("/profile", (req, res) => {
     res.sendFile(__dirname + "/public/html/profile.html");
 });
 
+server.get("/loading", (req, res) => {
+    res.sendFile(__dirname + "/public/html/loading.html");
+});
+
 // ---------------------------------------------------------------
 
 /* Start server */
