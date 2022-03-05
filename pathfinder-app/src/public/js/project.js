@@ -1,6 +1,7 @@
 /* Javascript for C.R.U.D operations on project resources */
 let userId = localStorage.uid;
 let token = localStorage.token;
+//let projectArea = document.querySelector(".grid-container");
 document.addEventListener('DOMContentLoaded', function() {
     handleDOMUpdates(userId, token);
 
@@ -24,15 +25,52 @@ async function handleDOMUpdates(userId, token) {
 
         // Update the DOM
         for(let i = 0; i < data.length; i++){
-            let newProjectTemplate = `<p>${data[i].name}</p>
-            <p>${data[i].description}</p>
-            <p>${data[i].p_id}</p>`;
-            document.querySelector(".text").innerHTML += newProjectTemplate;
+            let newGridItem = `<div class="grid-item">
+            <h5><b>${data[i].name.toUpperCase()}</b></h5>
+            <p>${data[i].description}</p> 
+            <p id="project_id"><e>${data[i].p_id}</e><p>
+            <button class="updateBtn">Update</button>
+            <button class="delBtn">Delete</button>
+            <button class="launchBtn">Launch</button>
+            </div>`;
+            document.querySelector(".grid-container").innerHTML += newGridItem;
         }
+
+        // Set event listeners for the buttons
+        setEventListeners();
     })
     .catch(err => {
         console.log(err.message || "Error occurred while logging user in");
     });
     
 }
-// ------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+function setEventListeners() {
+    /* Delete button event listener */
+    document.querySelectorAll(".delBtn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent returning to the top of the page when clicked
+
+            window.alert("Clicked delete!");
+        })
+    })
+    /* Update button event listener */
+    document.querySelectorAll(".updateBtn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent returning to the top of the page when clicked
+
+            window.alert("Clicked update!");
+            
+        })
+    })
+    /* Launch button event listener */
+    document.querySelectorAll(".launchBtn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault(); // Prevent returning to the top of the page when clicked
+
+            window.alert("Clicked launch!");
+            
+        })
+    })
+  
+}
