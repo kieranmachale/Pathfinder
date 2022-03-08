@@ -26,7 +26,8 @@ async function handleDOMUpdates(userId, token) {
         // Update the DOM
         for(let i = 0; i < data.length; i++){
             let newGridItem = `<div class="grid-item">
-            <h5><b>${data[i].name.toUpperCase()}</b></h5>
+            <h5><b class="projectName">${data[i].name.toUpperCase()}</b></h5>
+            <hr>
             <p>${data[i].description}</p> 
             <p id="project_id"><e>${data[i].p_id}</e><p>
             <button class="updateBtn">Update</button>
@@ -74,3 +75,10 @@ function setEventListeners() {
     })
   
 }
+
+
+$("#searchBar").on("keyup", function () {
+    var search = this.value;  if( search == '') { return } 
+ $( ".grid-item" ).each(function() {
+   a = this; if (a.innerHTML.search(search) > 0 ) {this.hidden = false} else {this.hidden = true}
+ }); })
