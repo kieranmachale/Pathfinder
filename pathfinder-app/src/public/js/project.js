@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Fetch user's projects */
 async function handleDOMUpdates(userId, token) {
+    /* Flush the DOM */
+    document.querySelector(".grid-container").innerHTML = ' ';
+
     const response = fetch(`http://localhost:3000/api/project/${userId}`, {
         method: 'GET',
         headers: {
@@ -46,6 +49,44 @@ async function handleDOMUpdates(userId, token) {
     
 }
 // --------------------------------------------------------------------------------------
+
+/* Handle user requests to create new project */
+async function createNewProject(){
+    const response = fetch(`http://localhost:3000/api/project/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept' : 'application/json',
+            'token': token
+        },
+        body: JSON.stringify({
+            name:"Test Project 2",
+            description:"test description",
+            public:"true",
+            width:14,
+            len:12,
+            uid: userId
+        })
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        console.log(data);
+        //alert("Project created!");
+    })
+    .then(() => {
+        handleDOMUpdates(userId, token);
+    })
+    .catch(err => {
+        console.log(err.message || "Error occurred while logging user in");
+        alert(err.message);
+    });
+}
+// --------------------------------------------------------------------------------------
+
+
+// --------------------------------------------------------------------------------------
 function setEventListeners() {
     /* Delete button event listener */
     document.querySelectorAll(".delBtn").forEach(btn => {
@@ -77,6 +118,15 @@ function setEventListeners() {
 }
 
 
+document.querySelector("#createProjectBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    /* Send fetchAPI request to create project */
+    createNewProject();
+    
+});
+
+
+/* Search bar */
 $("#searchBar").on("keyup", function () {
     var search = this.value;  if( search == '') { return } 
  $( ".grid-item" ).each(function() {

@@ -41,42 +41,42 @@
                 <!-- <span class="tooltip">Dashboard</span> -->
             </li>
             <li>
-                <a href="/">
+                <a href="/" id="dashboardBtn">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                 </a>
                 <!-- <span class="tooltip">Dashboard</span> -->
             </li>
             <li>
-                <a href="#">
+                <a href="#" id="userBtn">
                     <i class='bx bx-user'></i>
                     <span class="links_name">User</span>
                 </a>
                 <!-- <span class="tooltip">Dashboard</span> -->
             </li>
             <li>
-                <a href="#">
+                <a href="#" id="createBtn">
                     <i class='bx bx-add-to-queue'></i>
                     <span class="links_name">Create</span>
                 </a>
                 <!-- <span class="tooltip">Dashboard</span> -->
             </li>
             <li>
-                <a href="#">
+                <a href="#" id="reportBtn">
                     <i class='bx bx-chat'></i>
                     <span class="links_name">Report</span>
                 </a>
                 <!-- <span class="tooltip">Dashboard</span> -->
             </li>
             <li>
-                <a href="#">
+                <a href="#" id="downloadsBtn">
                     <i class='bx bx-folder-open'></i>
                     <span class="links_name">Downloads</span>
                 </a>
                 <!-- <span class="tooltip">Dashboard</span> -->
             </li>
             <li>
-                <a href="#">
+                <a href="#" id="settingBtn">
                     <i class='bx bx-cog'></i>
                     <span class="links_name">Settings</span>
                 </a>
@@ -94,6 +94,31 @@
             </div>
         </div>
     </div>
+
+    <!-- Project Section -->
+    <div class="home_content">
+        <div class="grid-container"></div>
+
+        <!-- Create Modal -->
+        <div class="modal-bg">
+            <div class="modal">
+                <h2>Create Project</h2>
+                <label for="name">Name: </label>
+                <input type="text">
+                <label for="email">Description: </label>
+                <textarea placeholder="Max 200 characters..." rows="5"></textarea>
+                <label>Width: </label>
+                <input type="range" min="1" max="100" value="50" class="slider" id="widthRange">
+                <span id="widthValue"></span>
+                <label>Length: </label>
+                <input type="range" min="1" max="100" value="50" class="slider" id="lengthRange">
+                <span id="lengthValue"></span>
+                <button id="createProjectBtn">Submit</button>
+                <span class="modal-close">x</span>
+            </div>
+        </div>
+    </div>
+
 
 
     <!-- Footer -->
@@ -131,15 +156,7 @@
             </li>
         </ul>
         </div>
-
-        <div class="home_content">
-            <div class="grid-container">
-            </div>
-        </div>
-
-
-
-        <!-- Footer Elements -->
+    </footer>
     
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
@@ -148,13 +165,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Copyright -->
         <script src="project.js"></script>
+        <script src="modalController.js"></script>
         <script>
             function redirect(){
                 location.href="/";
             }
         </script>
-    
-    </footer>
 
   </body>
 </html>
