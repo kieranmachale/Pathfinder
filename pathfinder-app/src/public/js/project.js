@@ -32,7 +32,7 @@ async function handleDOMUpdates(userId, token) {
             <h5><b class="projectName">${data[i].name.toUpperCase()}</b></h5>
             <hr>
             <p>${data[i].description}</p> 
-            <p id="project_id"><e>${data[i].p_id}</e><p>
+            <p class="project_id">${data[i].p_id}<p>
             <button class="updateBtn">Update</button>
             <button class="delBtn">Delete</button>
             <button class="launchBtn">Launch</button>
@@ -72,11 +72,17 @@ async function createNewProject(){
         return res.json();
     })
     .then(data => {
-        console.log(data);
-        //alert("Project created!");
-    })
-    .then(() => {
-        handleDOMUpdates(userId, token);
+        /* Update the DOM with new project */
+        let newGridItem = `<div class="grid-item">
+            <h5><b class="projectName">${data.name.toUpperCase()}</b></h5>
+            <hr>
+            <p>${data.description}</p> 
+            <p class="project_id">${data.p_id}<p>
+            <button class="updateBtn">Update</button>
+            <button class="delBtn">Delete</button>
+            <button class="launchBtn">Launch</button>
+            </div>`;
+        document.querySelector(".grid-container").innerHTML += newGridItem;
     })
     .catch(err => {
         console.log(err.message || "Error occurred while logging user in");
@@ -110,14 +116,18 @@ function setEventListeners() {
         btn.addEventListener("click", (e) => {
             e.preventDefault(); // Prevent returning to the top of the page when clicked
 
-            window.alert("Clicked launch!");
+            //window.alert("Clicked connect");
+            let connectModal = document.querySelector(".modal-connect");
+            connectModal.classList.add('bg-active');
+            const targetEl = e.target;
+            console.log(targetEl.parentElement.parentElement.querySelector(".project_id").innerHTML);
             
         })
     })
   
 }
 
-
+/* Event handlers */
 document.querySelector("#createProjectBtn").addEventListener("click", function(e){
     e.preventDefault();
     /* Send fetchAPI request to create project */
