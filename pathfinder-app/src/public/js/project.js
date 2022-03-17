@@ -91,6 +91,31 @@ async function createNewProject(){
 }
 // --------------------------------------------------------------------------------------
 
+/* Fetch a single user project */
+async function getProjectInfo(projectId){
+    //console.log(projectId);
+
+    const response = fetch(`http://localhost:3000/api/project/${userId}/${projectId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept' : 'application/json',
+            'token': token
+        }
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        console.log(data);
+        // Update Modal View
+    })
+    .catch(err => {
+        console.log(err.message || "Error occurred while logging user in");
+    });
+
+}
+
 
 // --------------------------------------------------------------------------------------
 function setEventListeners() {
@@ -120,7 +145,9 @@ function setEventListeners() {
             let connectModal = document.querySelector(".modal-connect");
             connectModal.classList.add('bg-active');
             const targetEl = e.target;
-            console.log(targetEl.parentElement.parentElement.querySelector(".project_id").innerHTML);
+            const projectId = parseInt(targetEl.parentElement.parentElement.querySelector(".project_id").innerHTML);
+
+            getProjectInfo(projectId);
             
         })
     })
