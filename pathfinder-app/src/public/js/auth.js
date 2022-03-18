@@ -15,7 +15,7 @@ document.querySelector("#btn1").addEventListener("click", function(e){
 // -----------------------------------------------------------------------------------------------
 
 async function loginUser(email, password) {
-    const response = fetch('http://localhost:3000/api/auth/login', {
+    const response = fetch('https://pathfinder-heroku.herokuapp.com/api/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Check user is logged in -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if(!localStorage.token){
+                location.href="/login";
+            }
+        }, false);
+    </script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,11 +28,6 @@
     <link rel="manifest" href="site.webmanifest">
 
     <title>Pathfinder &bull; Profile</title>
-    <script>
-        if(!localStorage.token){
-            location.href="/login";
-        }
-    </script>
   </head>
   <body>
 

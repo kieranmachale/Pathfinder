@@ -1,6 +1,39 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Check if user is logged in -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          if(localStorage.token){ // User is logged in
+              /* Replace login and signup buttons */
+              document.getElementById("login-home").style.display = 'none';
+              document.getElementById("signup-home").style.display = 'none';
+              document.getElementById("username-home").style.display = 'block';
+              getUserInfo();
+          }
+      }, false);
+      async function getUserInfo() {
+          let uid = localStorage.uid;
+          let token = localStorage.token;
+          const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/user/${uid}`, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+                  'Accept' : 'application/json',
+                  'token': token
+              }
+          })
+          .then(res => {
+              return res.json();
+          })
+          .then(data => {
+              document.querySelector("#username-home").innerHTML = `<i class="fa-solid fa-user"></i>${data.username.toLowerCase()}`;
+          })
+          .catch(err => {
+              console.log(err.message || "Error occurred while fetching user info");
+          });
+        }
+    </script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,6 +82,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://github.com/kieranmachale/Pathfinder" target="_blank"><i class="fab fa-github-square"></i>Github</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/profile" id="username-home"><i class="fa-solid fa-user"></i>username</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login" id="login-home">Log In</a>

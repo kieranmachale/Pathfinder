@@ -13,7 +13,7 @@ async function handleDOMUpdates(userId, token) {
     /* Flush the DOM */
     document.querySelector(".grid-container").innerHTML = ' ';
 
-    const response = fetch(`http://localhost:3000/api/project/${userId}`, {
+    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${userId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ async function handleDOMUpdates(userId, token) {
 
 /* Handle user requests to create new project */
 async function createNewProject(){
-    const response = fetch(`http://localhost:3000/api/project/`, {
+    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ async function createNewProject(){
 async function getProjectInfo(projectId){
     //console.log(projectId);
 
-    const response = fetch(`http://localhost:3000/api/project/${userId}/${projectId}`, {
+    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${userId}/${projectId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

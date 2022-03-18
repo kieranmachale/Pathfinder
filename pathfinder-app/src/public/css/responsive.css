@@ -89,6 +89,10 @@
   color: red;
 }
 
+#username-home {
+  display: none;
+}
+
 #login-home {
   border: 2px solid #fff;
   border-radius: 20px;
