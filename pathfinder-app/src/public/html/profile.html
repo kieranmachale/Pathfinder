@@ -20,6 +20,11 @@
     <link rel="manifest" href="site.webmanifest">
 
     <title>Pathfinder &bull; Profile</title>
+    <script>
+        if(!localStorage.token){
+            location.href="/login";
+        }
+    </script>
   </head>
   <body>
 
