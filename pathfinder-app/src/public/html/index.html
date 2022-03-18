@@ -27,7 +27,7 @@
               return res.json();
           })
           .then(data => {
-              document.querySelector("#username-home").innerHTML = `<i class="fa-solid fa-user"></i>${data.username.toLowerCase()}`;
+              document.querySelector("#username-home").innerHTML = `<i class="fas fa-user"></i>${data.username.toLowerCase()}`;
           })
           .catch(err => {
               console.log(err.message || "Error occurred while fetching user info");
@@ -84,7 +84,7 @@
                     <a class="nav-link" href="https://github.com/kieranmachale/Pathfinder" target="_blank"><i class="fab fa-github-square"></i>Github</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/profile" id="username-home"><i class="fa-solid fa-user"></i>username</a>
+                  <a class="nav-link" href="/profile" id="username-home"><i class="fa-solid fa-user"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/login" id="login-home">Log In</a>
@@ -139,7 +139,7 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="15.jpeg" class="d-block w-100" alt="slideone">
+            <img src="10.jpeg" class="d-block w-100" alt="slideone">
           </div>
           <div class="carousel-item">
             <img src="11.jpeg" class="d-block w-100" alt="slidetwo">
