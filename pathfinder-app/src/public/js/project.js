@@ -83,6 +83,10 @@ async function createNewProject(){
             <button class="launchBtn">Launch</button>
             </div>`;
         document.querySelector(".grid-container").innerHTML += newGridItem;
+    
+    })
+    .then(() => {
+        setEventListeners();
     })
     .catch(err => {
         console.log(err.message || "Error occurred while logging user in");
