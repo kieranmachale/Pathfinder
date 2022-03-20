@@ -112,9 +112,9 @@
             <div class="modal">
                 <h2>Create Project</h2>
                 <label for="name">Name: </label>
-                <input type="text">
+                <input type="text" id="name-input">
                 <label for="email">Description: </label>
-                <textarea placeholder="Max 200 characters..." rows="5"></textarea>
+                <textarea placeholder="Max 200 characters..." rows="5" id="desc-input"></textarea>
                 <label>Width: </label>
                 <input type="range" min="1" max="100" value="50" class="slider" id="widthRange">
                 <span id="widthValue"></span>
@@ -131,10 +131,10 @@
             <div class="modal">
                 <h2>Open Connection</h2>
                 <h4 id="modal-name">Name</h4>
-                <p>Description</p>
-                <p>Width</p>
-                <p>Length</p>
-                <button>Connect</button>
+                <p id="modal-description">Description</p>
+                <p id="modal-width">Width</p>
+                <p id="modal-length">Length</p>
+                <button class="connectBtn">Connect</button>
                 <span class="modal-close-connect" id="connect-close">x</span>
             </div>
         </div>

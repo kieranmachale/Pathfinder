@@ -1,6 +1,20 @@
 /* Javascript for C.R.U.D operations on project resources */
 let userId = localStorage.uid;
 let token = localStorage.token;
+
+/* DOM elements to be modified */
+let modalName = document.querySelector("#modal-name");
+let modalDesc = document.querySelector("#modal-description");
+let modalWidth = document.querySelector("#modal-width");
+let modalLength = document.querySelector("#modal-length");
+
+/* Form data */
+let inputProjectName = document.querySelector("#name-input");
+let inputProjectDescription = document.querySelector("#desc-input");
+let inputWidth = document.querySelector("#widthRange");
+let inputLength = document.querySelector("#lengthRange"); 
+
+
 //let projectArea = document.querySelector(".grid-container");
 document.addEventListener('DOMContentLoaded', function() {
     handleDOMUpdates(userId, token);
@@ -40,6 +54,13 @@ async function handleDOMUpdates(userId, token) {
             document.querySelector(".grid-container").innerHTML += newGridItem;
         }
 
+        if(data.length > 6){
+            document.querySelector(".grid-container").style.overflowY = "scroll";
+            document.querySelector(".grid-container").style.overflowX = "hidden";
+            document.querySelector(".grid-container").style.height = "95vh";
+
+        }
+
         // Set event listeners for the buttons
         setEventListeners();
     })
@@ -52,6 +73,9 @@ async function handleDOMUpdates(userId, token) {
 
 /* Handle user requests to create new project */
 async function createNewProject(){
+    let widthValue = parseFloat(inputWidth.value);
+    let lengthValue = parseFloat(inputLength.value);
+
     const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/`, {
         method: 'POST',
         headers: {
@@ -60,11 +84,11 @@ async function createNewProject(){
             'token': token
         },
         body: JSON.stringify({
-            name:"Test Project 2",
-            description:"test description",
+            name: inputProjectName.value,
+            description: inputProjectDescription.value,
             public:"true",
-            width:14,
-            len:12,
+            width: widthValue,
+            len: lengthValue,
             uid: userId
         })
     })
@@ -112,7 +136,11 @@ async function getProjectInfo(projectId){
     })
     .then(data => {
         console.log(data);
-        // Update Modal View
+        // Update Modal View with project info
+        modalName.innerHTML = data.name;
+        modalDesc.innerHTML = data.description;
+        modalWidth.innerHTML = `${data.width} cm`;
+        modalLength.innerHTML = `${data.length} cm`;
     })
     .catch(err => {
         console.log(err.message || "Error occurred while logging user in");

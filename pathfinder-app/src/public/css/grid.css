@@ -10,9 +10,13 @@
 .grid-item {
   padding: 20px;
   border-radius: 12px;
-  margin: 4px;
+  margin: 14px;
   border: 1px solid black;
   /*box-shadow: 6px 6px 6px rgb(207, 207, 207);*/
+}
+
+.project_id {
+  display: none;
 }
 /*
 .grid-item:nth-child(even) {
@@ -37,11 +41,27 @@ button {
   padding: 14px;
   border: none;
   border-radius: 8px;
-  background-color: #101011;
   color: white;
   margin: 10px;
-  background-color: #32a852;
+  /*background-color: #32a852;*/
   width: 30%;
+}
+
+#createProjectBtn,
+.updateBtn {
+  background-color: #32a852;
+}
+
+.connectBtn {
+  background-color: #32a852;
+}
+
+.delBtn {
+  background-color: rgb(194, 48, 48);
+}
+
+.launchBtn {
+  background-color: cornflowerblue;
 }
 
 textarea {
