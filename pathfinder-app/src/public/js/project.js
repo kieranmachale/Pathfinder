@@ -119,6 +119,27 @@ async function createNewProject(){
 }
 // --------------------------------------------------------------------------------------
 
+async function deleteProject(projectId){
+    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${projectId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept' : 'application/json',
+            'token': token
+        }
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        window.alert(data.message);
+    })
+    .catch(err => {
+        console.log(err.message || "Error occurred while logging user in");
+    });
+}
+// --------------------------------------------------------------------------------------
+
 /* Fetch a single user project */
 async function getProjectInfo(projectId){
     //console.log(projectId);
@@ -156,7 +177,15 @@ function setEventListeners() {
         btn.addEventListener("click", (e) => {
             e.preventDefault(); // Prevent returning to the top of the page when clicked
 
-            window.alert("Clicked delete!");
+            //window.alert("Clicked delete!");
+            const deleteTarget = e.target.parentElement.parentElement;
+            const projectId = parseInt(e.target.parentElement.parentElement.querySelector(".project_id").innerHTML);
+
+            // Delete project from database
+            deleteProject(projectId);
+            // Remove project from the DOM
+            deleteTarget.remove();
+            
         })
     })
     /* Update button event listener */
