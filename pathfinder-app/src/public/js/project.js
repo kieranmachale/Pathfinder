@@ -225,8 +225,8 @@ document.querySelector("#createProjectBtn").addEventListener("click", function(e
 
 
 /* Search bar */
-$("#searchBar").on("keyup", function () {
-    var search = this.value;  if( search == '') { return } 
- $( ".grid-item" ).each(function() {
-   a = this; if (a.innerHTML.search(search) > 0 ) {this.hidden = false} else {this.hidden = true}
+ $("#searchBar").on("keyup", function () {
+    var searchString = this.value.toLowerCase();  if( searchString == ' ') { return } 
+  $( ".grid-item" ).each(function() {
+   a = this; if(a.querySelector(".projectName").innerHTML.toLowerCase().includes(searchString)) { this.hidden = false } else { this.hidden = true}
  }); })
