@@ -43,13 +43,14 @@ async function handleDOMUpdates(userId, token) {
         // Update the DOM
         for(let i = 0; i < data.length; i++){
             let newGridItem = `<div class="grid-item">
-            <h5><b class="projectName">${data[i].name.toUpperCase()}</b></h5>
+            <h5><b class="projectName">${data[i].name.toUpperCase()}</b>
+            </h5>
             <hr>
             <p>${data[i].description}</p> 
-            <p class="project_id">${data[i].p_id}<p>
+            <p class="project_id">${data[i].p_id}</p>
+            <button class="launchBtn">Launch</button>
             <button class="updateBtn">Update</button>
             <button class="delBtn">Delete</button>
-            <button class="launchBtn">Launch</button>
             </div>`;
             document.querySelector(".grid-container").innerHTML += newGridItem;
         }
@@ -101,16 +102,17 @@ async function createNewProject(){
             <h5><b class="projectName">${data.name.toUpperCase()}</b></h5>
             <hr>
             <p>${data.description}</p> 
-            <p class="project_id">${data.p_id}<p>
-            <button class="updateBtn">Update</button>
-            <button class="delBtn">Delete</button>
+            <p class="project_id">${data.p_id}</p>
             <button class="launchBtn">Launch</button>
+            <button class="updateBtn">Update</button>
+            <button class="delBtn">Delete</button>   
             </div>`;
         document.querySelector(".grid-container").innerHTML += newGridItem;
     
     })
     .then(() => {
         setEventListeners();
+        document.querySelector(".modal-bg").classList.remove("bg-active"); // Close the modal view
     })
     .catch(err => {
         console.log(err.message || "Error occurred while logging user in");
@@ -120,6 +122,7 @@ async function createNewProject(){
 // --------------------------------------------------------------------------------------
 
 async function deleteProject(projectId){
+
     const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${projectId}`, {
         method: 'DELETE',
         headers: {
@@ -178,13 +181,15 @@ function setEventListeners() {
             e.preventDefault(); // Prevent returning to the top of the page when clicked
 
             //window.alert("Clicked delete!");
-            const deleteTarget = e.target.parentElement.parentElement;
-            const projectId = parseInt(e.target.parentElement.parentElement.querySelector(".project_id").innerHTML);
+            const deleteTarget = e.target.parentElement;
+            const projectId = parseInt(e.target.parentElement.querySelector(".project_id").innerHTML);
 
             // Delete project from database
+            console.log(projectId);
             deleteProject(projectId);
             // Remove project from the DOM
             deleteTarget.remove();
+           
             
         })
     })
@@ -206,7 +211,7 @@ function setEventListeners() {
             let connectModal = document.querySelector(".modal-connect");
             connectModal.classList.add('bg-active');
             const targetEl = e.target;
-            const projectId = parseInt(targetEl.parentElement.parentElement.querySelector(".project_id").innerHTML);
+            const projectId = parseInt(targetEl.parentElement.querySelector(".project_id").innerHTML);
 
             getProjectInfo(projectId);
             
@@ -222,7 +227,6 @@ document.querySelector("#createProjectBtn").addEventListener("click", function(e
     createNewProject();
     
 });
-
 
 /* Search bar */
  $("#searchBar").on("keyup", function () {

@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Modak
+- Font Author: Copyright (c) 2015 Ek Type (www.ektype.in)
+- Font Source: http://fonts.gstatic.com/s/modak/v16/EJRYQgs1XtIEsnMH8BVZ76KU.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

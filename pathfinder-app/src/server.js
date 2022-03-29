@@ -87,6 +87,10 @@ server.get("/loading", (req, res) => {
     res.sendFile(__dirname + "/public/html/loading.html");
 });
 
+server.get("/sketch", (req, res) => {
+    res.sendFile(__dirname + "/public/html/sketch.html");
+});
+
 // ---------------------------------------------------------------
 
 /* Start server */

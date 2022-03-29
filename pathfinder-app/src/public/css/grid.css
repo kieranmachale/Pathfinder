@@ -4,25 +4,30 @@
   padding: 10px;
 }
 
+/*
 .grid-item:hover {
   background-color: beige;
-}
+}*/
 .grid-item {
   padding: 20px;
-  border-radius: 12px;
+  /*border-radius: 12px;*/
   margin: 14px;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
+  border-radius: 0.3em;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
   /*box-shadow: 6px 6px 6px rgb(207, 207, 207);*/
 }
 
 .project_id {
   display: none;
 }
+
 /*
 .grid-item:nth-child(even) {
   background: radial-gradient(#76b2fe, #b69efe);
 }
-.grid-item:nth-child(3) {
+.grid-item:nth-child(odd) {
   background: radial-gradient(#fbc1c1, #fa99f5);
 }
 .grid-item:nth-child(4) {
@@ -31,8 +36,7 @@
 
 .home_content {
   /*background-image: url("background.gif");*/
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: ghostwhite;
   color: rgb(0, 0, 0);
 }
 
@@ -42,18 +46,20 @@ button {
   border: none;
   border-radius: 8px;
   color: white;
-  margin: 10px;
+  /*margin: 10px;*/
+  margin-top: 10px;
   /*background-color: #32a852;*/
   width: 30%;
 }
 
 #createProjectBtn,
-.updateBtn {
-  background-color: #32a852;
+.updateBtn,
+#submitReportBtn {
+  background-color: #7a7a7a;
 }
 
 .connectBtn {
-  background-color: #32a852;
+  background-color: #494892;
 }
 
 .delBtn {
@@ -61,11 +67,12 @@ button {
 }
 
 .launchBtn {
-  background-color: cornflowerblue;
+  background-color: rgb(43, 107, 226);
 }
 
 textarea {
   width: 70%;
+  padding: 5px;
 }
 
 .modal-bg {
@@ -83,7 +90,8 @@ textarea {
   transition: visibility 0s, opacity 0.5s;
 }
 
-.modal-connect {
+.modal-connect,
+.modal-report {
   position: fixed;
   top: 0;
   left: 0;
@@ -103,6 +111,7 @@ textarea {
   opacity: 1;
 }
 
+/*
 .modal {
   position: relative;
   background-color: white;
@@ -114,6 +123,22 @@ textarea {
   flex-direction: column;
   padding: 25px;
   border-radius: 12px;
+}*/
+
+.modal {
+  position: relative;
+  background-color: white;
+  width: 50%;
+  height: 70%;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.md-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
 .modal-close {
@@ -123,7 +148,8 @@ textarea {
   font-weight: bold;
   cursor: pointer;
 }
-.modal-close-connect {
+.modal-close-connect,
+.modal-close-report {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -133,4 +159,35 @@ textarea {
 
 .modal-create {
   padding: 15px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04aa6d;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04aa6d;
+  cursor: pointer;
 }

@@ -1,6 +1,11 @@
-/* Script that handles serial communication between Chrome and Arduino */
-
+const normalRadioButton = document.querySelector("#rd1");
+const sketchRadioButton = document.querySelector("#rd2");
 const connectButton = document.getElementById ("openSerial");
+// Filter on devices with the Arduino Uno USB Vendor/Product IDs.
+const filters = [
+    { usbVendorId: 0x2341, usbProductId: 0x0043 },
+    { usbVendorId: 0x2341, usbProductId: 0x0001 }
+];
 let port;
 
 if ('serial' in navigator) {
@@ -13,7 +18,14 @@ if ('serial' in navigator) {
       document.querySelector('figure').classList.replace('bounceIn', 'fadeOut');
     }
     else {
-      getReader();
+      // No mode selected
+      if(!normalRadioButton.checked==true && !sketchRadioButton.checked==true){
+        window.alert("Please select a connection mode!");
+      }else if(normalRadioButton.checked==true){
+        getReader();
+      }else{
+        location.href="/sketch";
+      }
     }
   });
 
@@ -29,8 +41,27 @@ else {
 
 /* Get available ports */
 async function getReader() {
-    port = await navigator.serial.requestPort({});
+    port = await navigator.serial.requestPort({ filters });
     await port.open({ baudRate: 9600 });
+    connectButton.innerText = '🔌 Disconnect';
+    if(!port.writable){
+      console.log("Not writable!");
+    }
+    const textEncoder = new TextEncoderStream();
+    const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
 
-    console.log(port);
+    const writer = textEncoder.writable.getWriter();
+    const res = await writeStream(writer);
+
+    writer.releaseLock();
+    port.close();
+}
+
+function writeStream(writer){
+  return new Promise((resolve, reject) => {
+  setTimeout(function(){
+    writer.write(String.fromCharCode(14)); // Send data to Arduino
+
+  }, 3000);  
+  });
 }

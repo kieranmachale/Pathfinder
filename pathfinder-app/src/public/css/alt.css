@@ -181,4 +181,6 @@ body {
 
 .logo_name {
   cursor: pointer;
+  margin-left: 15px;
+  margin-top: 15px;
 }

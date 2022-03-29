@@ -35,8 +35,9 @@
     <div class="sidebar">
         <div class="logo_content">
             <div class="logo">
-                <i class='bx bx-food-menu' ></i>
-                <div class="logo_name" onClick="redirect()">PATHFINDER</div>
+                <!--<i class='bx bx-food-menu' ></i>-->
+                
+                <div class="logo_name" onClick="redirect()"><b>PATHFINDER</b></div>
             </div>
             <!--<i class='bx bx-menu' id="menuBtn"></i>-->
         </div>
@@ -105,24 +106,38 @@
 
     <!-- Project Section -->
     <div class="home_content">
+        
+        <!-- Head section -->
+
+        <!-- Project section -->
         <div class="grid-container"></div>
 
         <!-- Create Modal View -->
         <div class="modal-bg">
-            <div class="modal">
+            <div class="modal md-1">
                 <h2>Create Project</h2>
                 <label for="name">Name: </label>
                 <input type="text" id="name-input">
                 <label for="email">Description: </label>
-                <textarea placeholder="Max 200 characters..." rows="5" id="desc-input"></textarea>
+                <textarea placeholder="Max 200 characters..." rows="5" id="desc-input" maxlength="200"></textarea>
                 <label>Width: </label>
                 <input type="range" min="1" max="100" value="50" class="slider" id="widthRange">
                 <span id="widthValue"></span>
                 <label>Length: </label>
-                <input type="range" min="1" max="100" value="50" class="slider" id="lengthRange">
+                <input type="range" min="1" max="400" value="200" class="slider" id="lengthRange">
                 <span id="lengthValue"></span>
                 <button id="createProjectBtn">Submit</button>
                 <span class="modal-close">x</span>
+            </div>
+        </div>
+
+        <!-- Report Modal View -->
+        <div class="modal-report">
+            <div class="modal">
+                <h2>Report Issue</h2>
+                <textarea rows="5" placeholder="Submit report up to 200 characters..."></textarea>
+                <button id="submitReportBtn">Submit</button>
+                <span class="modal-close-report">x</span>
             </div>
         </div>
 
@@ -130,20 +145,23 @@
         <div class="modal-connect">
             <div class="modal">
                 <h2>Open Connection</h2>
+                <p>Select connect to open a serial channel to the Arduino. Please select the correct data rate for your board.</p><br>
                 <h4 id="modal-name">Name</h4>
-                <p id="modal-description">Description</p>
+                <p id="modal-description">Description</p><br>
+                <h4>Dimensions</h4>
                 <p id="modal-width">Width</p>
-                <p id="modal-length">Length</p>
-                <button class="connectBtn" id="openSerial">Connect</button>
+                <p id="modal-length">Length</p><br>
+                <hr>
+                <input id="rd1" name="groupA" type="radio" value="Normal"> Normal</input>
+                <input id="rd2" name="groupA" type="radio" value="Sketch"> Sketch</input>
+                <button class="connectBtn" id="openSerial">🔌 Connect</button>
                 <span class="modal-close-connect" id="connect-close">x</span>
             </div>
         </div>
 
 
     </div>
-
-
-
+    
     <!-- Footer -->
     <footer class="page-footer font-small special-color-dark pt-4">
 
@@ -151,6 +169,7 @@
         <div class="container">
     
         <!-- Social buttons -->
+        
         <ul class="list-unstyled list-inline text-center">
             <li class="list-inline-item">
             <a class="btn-floating btn-fb mx-1">
