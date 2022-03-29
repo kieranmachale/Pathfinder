@@ -59,7 +59,15 @@ button {
 }
 
 .connectBtn {
-  background-color: #494892;
+  background-color: #d3d3d3;
+  font-size: 1em;
+  border-radius: 1em;
+  border-width: 2px;
+  padding: 0.5em 1em;
+  border: 2px solid black;
+  color: black;
+  outline: none;
+  margin-left: 5px;
 }
 
 .delBtn {
