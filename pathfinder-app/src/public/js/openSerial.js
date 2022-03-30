@@ -24,7 +24,7 @@ if ('serial' in navigator) {
       }else if(normalRadioButton.checked==true){
         getReader();
       }else{
-        location.href="/sketch";
+        window.open('https://pathfinder-heroku.herokuapp.com/sketch', '_blank');
       }
     }
   });
@@ -32,11 +32,15 @@ if ('serial' in navigator) {
   connectButton.disabled = false;
 }
 else {
-  const firstBubble = document.querySelector('p.bubble');
+  /*
+  const firstBubble = document.querySelector("#bubble");
   const noSerialSupportNotice = document.createElement('p');
   noSerialSupportNotice.innerHTML = '<p class="notice bubble">You\'re on the right track! This browser is lacking support for Web Serial API, though, and thats a bummer.</p>';
 
   firstBubble.parentNode.insertBefore(noSerialSupportNotice, firstBubble.nextSibling);
+  */
+  const firstBubble = document.querySelector(".bubble");
+  firstBubble.innerHTML = "<b>NOTE:</b> This browser is lacking support for the Web Serial API. To use all features of the app please use Google Chrome";
 }
 
 /* Get available ports */

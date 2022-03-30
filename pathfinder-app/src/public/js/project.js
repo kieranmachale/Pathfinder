@@ -48,9 +48,9 @@ async function handleDOMUpdates(userId, token) {
             <hr>
             <p>${data[i].description}</p> 
             <p class="project_id">${data[i].p_id}</p>
-            <button class="launchBtn">Launch</button>
-            <button class="updateBtn">Update</button>
-            <button class="delBtn">Delete</button>
+            <button class="launchBtn">LAUNCH</button>
+            <button class="updateBtn">UPDATE</button>
+            <button class="delBtn">DELETE</button>
             </div>`;
             document.querySelector(".grid-container").innerHTML += newGridItem;
         }
@@ -58,7 +58,7 @@ async function handleDOMUpdates(userId, token) {
         if(data.length > 6){
             document.querySelector(".grid-container").style.overflowY = "scroll";
             document.querySelector(".grid-container").style.overflowX = "hidden";
-            document.querySelector(".grid-container").style.height = "95vh";
+            document.querySelector(".grid-container").style.height = "80vh";
 
         }
 

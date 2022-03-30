@@ -108,7 +108,22 @@
     <div class="home_content">
         
         <!-- Head section -->
+        <div class="dashboard">
+            <p>Dashboard - Pathfinder v1.0.0</p>
+            <hr>
+        </div>
 
+        <div class="head-container">
+            <div class="head-item">
+                <h3>Arduino Uno Projects</h3>
+                <p>Create a new project by using the sidebar menu and selecting the "create" button.</p>
+                <p class="bubble"></p>
+            </div>
+            <div class="head-item">
+                <button id="headerBtn" onclick="redirect()">Back to Homepage</button>
+            </div>
+        </div>
+        
         <!-- Project section -->
         <div class="grid-container"></div>
 
@@ -134,7 +149,7 @@
         <!-- Report Modal View -->
         <div class="modal-report">
             <div class="modal">
-                <h2>Report Issue</h2>
+                <h2 id="reportHdr">Report Issue</h2><br>
                 <textarea rows="5" placeholder="Submit report up to 200 characters..."></textarea>
                 <button id="submitReportBtn">Submit</button>
                 <span class="modal-close-report">x</span>
