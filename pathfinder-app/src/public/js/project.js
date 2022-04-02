@@ -220,6 +220,31 @@ function setEventListeners() {
   
 }
 
+async function submitReport(){
+
+    let report = document.querySelector("#reportText").value;
+    const res = fetch(`http://localhost:3000/api/report/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept' : 'application/json',
+            'token': token
+        },
+        body: JSON.stringify({
+            uid: userId,
+            type: "bug",
+            description: report
+        })
+    })
+    .then(res => {
+        // check status
+    })
+    .then(() => {
+        window.alert("Your report was submitted, thank you.");
+        document.querySelector(".modal-report").classList.remove("bg-active");
+    })
+}
+
 /* Event handlers */
 document.querySelector("#createProjectBtn").addEventListener("click", function(e){
     e.preventDefault();
@@ -227,6 +252,12 @@ document.querySelector("#createProjectBtn").addEventListener("click", function(e
     createNewProject();
     
 });
+
+/* Report Submission */
+document.querySelector("#submitReportBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    submitReport();
+})
 
 /* Search bar */
  $("#searchBar").on("keyup", function () {

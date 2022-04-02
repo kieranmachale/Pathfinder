@@ -13,7 +13,7 @@ var myPromise = new Promise(function(resolve, reject){
 
 async function setup() {
   createCanvas(640, 400);
-  //smooth();
+  smooth();
   serial = new p5.SerialPort();
 
   serial.on('connected', serverConnected);

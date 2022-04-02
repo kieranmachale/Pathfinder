@@ -39,7 +39,8 @@ server.use(cors(corsOptions));
 require("./routes/user.routes")(server);
 require("./routes/auth.routes")(server);
 require("./routes/projects.routes")(server);
-require("./routes/arduino.routes")(server);
+require("./routes/report.routes")(server);
+
 
 // ----------------------------------------------------------------
 
