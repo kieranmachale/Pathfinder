@@ -19,6 +19,7 @@ let inputLength = document.querySelector("#lengthRange");
 document.addEventListener('DOMContentLoaded', function() {
     handleDOMUpdates(userId, token);
 
+
 }, false);
 // ------------------------------------------------------------------------------------------
 
@@ -249,8 +250,11 @@ async function submitReport(){
 document.querySelector("#createProjectBtn").addEventListener("click", function(e){
     e.preventDefault();
     /* Send fetchAPI request to create project */
-    createNewProject();
-    
+    if(!inputProjectName.value || !inputProjectDescription.value || !inputWidth.value || !inputLength.value){
+        window.alert("Content cannot be missing!");
+    }else{
+        createNewProject();
+    }
 });
 
 /* Report Submission */

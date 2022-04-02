@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node ./pathfinder-app/src/server.js",
-    "dev": "nodemon ./pathfinder-app/src/server.js"
+    "dev": "nodemon ./pathfinder-app/src/server.js",
+    "test": "mocha ./pathfinder-app/tests/tests.js"
   },
   "repository": {
     "type": "git",

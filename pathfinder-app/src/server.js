@@ -92,6 +92,10 @@ server.get("/sketch", (req, res) => {
     res.sendFile(__dirname + "/public/html/sketch.html");
 });
 
+server.get("/marketplace", (req, res) => {
+    res.sendFile(__dirname + "/public/html/marketplace.html");
+});
+
 // ---------------------------------------------------------------
 
 /* Start server */

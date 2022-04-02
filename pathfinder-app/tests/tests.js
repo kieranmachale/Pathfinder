@@ -31,7 +31,7 @@ describe('Authentication tests', () => {
         let user = {
             'email': testUserEmail,
             'password': "qwerty",
-            'role':'active'
+            'username':'unittest'
         }
         chai.request(server)
             .post('/api/auth/register')
@@ -42,6 +42,7 @@ describe('Authentication tests', () => {
         done();
     });
 
+    
     it('Register User with invalid password ', (done) => {
         let r = Math.random().toString(36).substring(7);
         let testUserEmail = r + '@gmail.com';
@@ -102,6 +103,7 @@ describe('Authentication tests', () => {
         done();
     });
 
+    /*
     it('Login correctly', (done) => {
         let user = {
             "email": email,
@@ -114,8 +116,8 @@ describe('Authentication tests', () => {
                 chai.expect(res.status).to.equal(200);
             });
         done();
-    });
-
+    });*/
+    
     // logout
     /*it('Logout correctly', (done) => {
         chai.request(server)
