@@ -85,6 +85,7 @@ exports.login = (req, res) => {
             // Save JWT to whitelist
             res.status(200).send({
                 id: user.uid,
+                username: user.username,
                 email: user.email,
                 jwt: accessToken
             });

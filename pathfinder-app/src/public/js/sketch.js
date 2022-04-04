@@ -12,17 +12,19 @@ var myPromise = new Promise(function(resolve, reject){
 
 
 async function setup() {
-  createCanvas(640, 400);
+  var myCanvas = createCanvas(640, 400);
+  myCanvas.parent("sketch-box");
   smooth();
   serial = new p5.SerialPort();
 
   serial.on('connected', serverConnected);
   serial.on('data', gotData);
+  serial.on('close', portClose);
 
   serial.open('/dev/tty.usbmodem1411');
   await myPromise; // Must wait while the Arduino restarts
 
-  outByte = int(14);
+  outByte = int(2);
   serial.write(outByte);
 
   //doWrite();
@@ -30,7 +32,12 @@ async function setup() {
 }
 
 function serverConnected() {
-    print("Connected to Server");
+    //mytext.innerHTML += "<p class='open'>[Connection Opened...]</p>";
+    document.querySelector(".sketch-info").innerHTML="Hello!";
+}
+
+function portClose(){
+  //mytext.innerHTML += "<p class='close'>[Connection Closed...]</p>"
 }
 
 function gotData(){

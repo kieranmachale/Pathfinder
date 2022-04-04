@@ -201,7 +201,10 @@
         var storedScripts = [];
         document.querySelector("#addScript").addEventListener("click", function(e){
             e.preventDefault();
-            if(storedScripts.includes("Object & Range Detection")){
+            if(!localStorage.token){
+              location.href="/login";
+            } else{
+              if(storedScripts.includes("Object & Range Detection")){
                 alert("Already added to profile!");
             }
             else{
@@ -209,6 +212,7 @@
                 localStorage.setItem("storedScripts", JSON.stringify(storedScripts));
                 window.alert("Script added to your profile!");
             }   
+            } 
         });
     </script>
   </body>

@@ -4,11 +4,28 @@
         * {
             box-sizing:border-box;
         }
+        body{
+          color:rgba(98,245,31);
+        }
+        .sketch-container{
+          display:grid;
+          grid-template-columns: 2fr 1fr;
+        }
+        .sketch-info{
+          border:1px solid white;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
     <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5.serialserver@0.0.28/lib/p5.serialport.js"></script>
     <script src="sketch.js"></script>
   </head>
   <body>
+    <div class="sketch-container">
+      <div class="sketch" id="sketch-box">
+      </div>
+      <div class="sketch-info">
+        
+      </div>
+    </div>
   </body>
 </html>

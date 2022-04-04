@@ -15,7 +15,7 @@ document.querySelector("#btn1").addEventListener("click", function(e){
 // -----------------------------------------------------------------------------------------------
 
 async function loginUser(email, password) {
-    const response = fetch('https://pathfinder-heroku.herokuapp.com/api/auth/login', {
+    const response = fetch('http://localhost:3000/api/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -33,9 +33,11 @@ async function loginUser(email, password) {
         if(data.jwt){
             let accessToken = data.jwt;
             let userId = data.id;
+            let username = data.username;
             window.localStorage.clear();
             window.localStorage.setItem("token", accessToken);
             window.localStorage.setItem("uid", userId);
+            window.localStorage.setItem("username", username);
             location.href ="/profile";
         }else{
             //Handle error
