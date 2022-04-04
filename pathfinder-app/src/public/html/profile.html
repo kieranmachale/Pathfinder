@@ -180,6 +180,23 @@
             </div>
         </div>
 
+        <div class="modal-update">
+            <div class="modal md-1">
+                <h2>Update Project</h2>
+                <label for="name">Name: </label>
+                <input type="text" id="name-update">
+                <label for="email">Description: </label>
+                <textarea placeholder="Max 200 characters..." rows="5" id="desc-update" maxlength="200"></textarea>
+                <label>Width: </label>
+                <input type="range" min="1" max="100" value="50" class="slider" id="widthUpdate">
+                <span id="widthValue"></span>
+                <label>Length: </label>
+                <input type="range" min="1" max="400" value="200" class="slider" id="lengthUpdate">
+                <span id="lengthValue"></span>
+                <button id="updateProjectBtn">Submit</button>
+                <span class="update-close">x</span>
+            </div>
+        </div>
 
     </div>
     

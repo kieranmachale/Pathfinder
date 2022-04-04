@@ -173,6 +173,69 @@ async function getProjectInfo(projectId){
 
 }
 
+async function updateProject(projectId){
+    localStorage.setItem("currentProjectId", projectId);
+    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${userId}/${projectId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept' : 'application/json',
+            'token': token
+        }
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        console.log(data);
+        // Update Modal View with project info
+        document.querySelector("#name-update").value = data.name;
+        document.querySelector("#desc-update").value = data.description;
+        document.querySelector("#widthUpdate").value = data.width;
+        document.querySelector("#lengthUpdate").value = data.length;
+        
+    })
+    .catch(err => {
+        console.log(err.message || "Error occurred while fetching user data");
+    });
+}
+
+async function doProjectPatch(projectId){
+    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${projectId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept' : 'application/json',
+            'token': token
+        },
+        body: JSON.stringify({
+            name: document.querySelector("#name-update").value,
+            description: document.querySelector("#desc-update").value,
+            public:"true",
+            width: document.querySelector("#widthUpdate").value,
+            len: document.querySelector("#lengthUpdate").value,
+            uid: userId
+        })
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(data => {
+        window.alert("Project updated!");
+        handleDOMUpdates(userId, token);
+    })
+    .then(() => {
+        document.querySelector(".modal-update").classList.remove("bg-active"); // Close the modal view
+    })
+    .catch(err => {
+        window.alert(err.message || "Error occurred while updating project");
+    });
+}
+
+document.querySelector("#updateProjectBtn").addEventListener("click", function(e){
+    doProjectPatch(localStorage.currentProjectId);
+});
+
 
 // --------------------------------------------------------------------------------------
 function setEventListeners() {
@@ -199,7 +262,13 @@ function setEventListeners() {
         btn.addEventListener("click", (e) => {
             e.preventDefault(); // Prevent returning to the top of the page when clicked
 
-            window.alert("Clicked update!");
+            //window.alert("Clicked update!");
+            let updateModal = document.querySelector(".modal-update");
+            updateModal.classList.add('bg-active');
+            const targetEl = e.target;
+            const projectId = parseInt(targetEl.parentElement.querySelector(".project_id").innerHTML);
+            
+            updateProject(projectId);
             
         })
     })

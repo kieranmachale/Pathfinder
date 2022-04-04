@@ -6,7 +6,9 @@ let connectModal = document.querySelector(".modal-connect");
 let reportModal = document.querySelector(".modal-report");
 let modalClose = document.querySelector(".modal-close");
 let reportClose = document.querySelector(".modal-close-report");
+let updateClose = document.querySelector(".update-close");
 let logout = document.querySelector("#log_out");
+
 
 /* Make modal view visible */
 createBtn.addEventListener("click", function(e){
@@ -25,6 +27,11 @@ reportBtn.addEventListener("click", function(e){
 reportClose.addEventListener("click", function(e){
     reportModal.classList.remove('bg-active');
 });
+updateClose.addEventListener("click", function(e){
+    document.querySelector(".modal-update").classList.remove('bg-active');
+});
+
+
 
 
 
