@@ -222,6 +222,15 @@ textarea {
   padding: 15px;
 }
 
+td {
+  padding-bottom: 2px;
+}
+
+table {
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+
 .slider {
   -webkit-appearance: none;
   width: 100%;

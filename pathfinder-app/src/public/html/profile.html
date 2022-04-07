@@ -7,6 +7,7 @@
             if(!localStorage.token){
                 location.href="/login";
             }
+            document.querySelector("#linkname").innerHTML=`${localStorage.username}`;
         }, false);
     </script>
     <!-- Required meta tags -->
@@ -50,7 +51,7 @@
                 <!-- <span class="tooltip">Dashboard</span> -->
             </li>
             <li>
-                <a href="/" id="dashboardBtn">
+                <a href="#" id="dashboardBtn">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                 </a>
@@ -59,7 +60,7 @@
             <li>
                 <a href="#" id="userBtn">
                     <i class='bx bx-user'></i>
-                    <span class="links_name">User</span>
+                    <span class="links_name" id="linkname"></span>
                 </a>
                 <!-- <span class="tooltip">Dashboard</span> -->
             </li>
@@ -165,7 +166,19 @@
                 <p id="modal-description">Description</p><br>
                 <h4>Dimensions</h4>
                 <p id="modal-width">Width</p>
-                <p id="modal-length">Length</p><br>
+                <p id="modal-length">Length</p><hr>
+                <form>
+                    <table>
+                      <tr>
+                        <td align="left">Rotations: </td>
+                        <td align="left"><input type="number" id="rotations" name="rotations" value="10" style="width:3em"/></td>
+                      </tr>
+                      <tr>
+                        <td align="right">Temperature: </td>
+                        <td align="left"><input type="number" id="temp" name="temp" value="20" style="width:3em"/><span> °C</span></td>
+                      </tr>
+                    </table>
+                  </form>
                 <hr>
                 <div class="dropdown">
                     <button class="dropbtn">Script</button>

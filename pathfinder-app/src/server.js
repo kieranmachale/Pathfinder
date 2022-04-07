@@ -96,6 +96,10 @@ server.get("/marketplace", (req, res) => {
     res.sendFile(__dirname + "/public/html/marketplace.html");
 });
 
+server.get("/about", (req, res) => {
+    res.sendFile(__dirname + "/public/html/about.html");
+});
+
 // ---------------------------------------------------------------
 
 /* Start server */

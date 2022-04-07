@@ -7,9 +7,17 @@ const filters = [
     { usbVendorId: 0x2341, usbProductId: 0x0001 }
 ];
 let port;
+let noRotations = document.querySelector("#rotations");
+let temp = document.querySelector("#temp");
+let length = document.querySelector("#modal-length");
 
 if ('serial' in navigator) {
   connectButton.addEventListener('click', function () {
+
+    localStorage.setItem("currentRotations", noRotations.value);
+    localStorage.setItem("currentTemp", temp.value);
+    localStorage.setItem("objectLength", length.innerHTML);
+
     if (port) {
       port.close();
       port = undefined;

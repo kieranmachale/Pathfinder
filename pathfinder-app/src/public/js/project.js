@@ -12,7 +12,7 @@ let modalLength = document.querySelector("#modal-length");
 let inputProjectName = document.querySelector("#name-input");
 let inputProjectDescription = document.querySelector("#desc-input");
 let inputWidth = document.querySelector("#widthRange");
-let inputLength = document.querySelector("#lengthRange"); 
+let inputLength = document.querySelector("#lengthRange");
 
 
 //let projectArea = document.querySelector(".grid-container");
