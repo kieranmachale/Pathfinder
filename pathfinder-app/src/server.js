@@ -100,6 +100,10 @@ server.get("/about", (req, res) => {
     res.sendFile(__dirname + "/public/html/about.html");
 });
 
+server.get("/settings", (req, res) => {
+    res.sendFile(__dirname + "/public/html/settings.html");
+});
+
 // ---------------------------------------------------------------
 
 /* Start server */

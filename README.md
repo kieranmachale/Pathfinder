@@ -1,8 +1,11 @@
 # Pathfinder
 
 <h2>Instructions for use</h2>
+<p><e>NOTE:</e> The easiest way to use this application is to simply visit the URL below, however
+additional instructinos have been provided for anyone who wants to run a local version of the app</p>
+<b>https://pathfinder-heroku.herokuapp.com/</b>
     <ol>
-        <li>Navigate to the root directory</li>
+        <li>Navigate to the project root directory</li>
         <li>Run 'npm i'</li>
         <li>Run 'npm start' or 'npm run dev'</li>
     </ol>
@@ -16,7 +19,6 @@
     <th>Auths?</th>
     <th>Operation</th>
 </tr>
-
 
 <tr>
     <td>auth/login</td>

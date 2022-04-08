@@ -16,9 +16,11 @@ const int echoPin = 11;
 // Variables for the duration and the distance
 long duration;
 int distance;
+// Variables for incoming serial messages
 int incomingBytes;
 int rotations;
 float temp;
+float airSpeed;
 int counter = 0;
 
 Servo myServo; // Creates a servo object for controlling the servo motor
@@ -29,9 +31,16 @@ void setup() {
   Serial.begin(9600);
   myServo.attach(12); // Defines on which pin is the servo motor attached
 }
+
+// Find the speed of sound in air for a given temperature (in celsius)
+/*float getSpeedofSound(temp){
+  return (331 + (0.61) * temp);  
+}*/
+
 void loop() {
   if(Serial.available() > 0){ // wait for serial event
-      incomingBytes = Serial.read();
+      temp = Serial.read();
+      //airSpeed = getSpeedofSound(temp);
       while(Serial.available() == 0){ }
       rotations = Serial.read();
       while(counter < rotations){ // perform object detection n number of times
