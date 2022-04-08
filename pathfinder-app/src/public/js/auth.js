@@ -41,7 +41,7 @@ async function loginUser(email, password) {
             location.href ="/profile";
         }else{
             //Handle error
-            location.href="/login"
+            document.querySelector(".error-div").style.display = "block";
         }
         
         /* Redirect to profile page */

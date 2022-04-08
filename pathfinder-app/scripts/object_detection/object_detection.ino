@@ -20,7 +20,7 @@ int distance;
 int incomingBytes;
 int rotations;
 float temp;
-float airSpeed;
+float velocity;
 int counter = 0;
 
 Servo myServo; // Creates a servo object for controlling the servo motor
@@ -35,7 +35,7 @@ void setup() {
 void loop() {
   if(Serial.available() > 0){ // wait for serial event
       temp = Serial.read();
-      airSpeed = getSOS(temp);
+      //velocity = getSOS(temp);
       while(Serial.available() == 0){ }
       rotations = Serial.read();
       while(counter < rotations){ // perform object detection n number of times
@@ -62,7 +62,7 @@ int calculateDistance(){
 
 // Function that calculates the speed of sound in the air for a given temperature (in celsius)
 float getSOS(float temp){
-  float n = 331 + (0.61) * temp;
+  float n = (331 + (0.61) * temp);
   return n; 
 }
 

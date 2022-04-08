@@ -1,10 +1,13 @@
+// Declaring variables for radar graphic
 let iDistance, iAngle;
 let serial;
 let currentString;
 let latestData = "waiting for data";
 let myArray;
 let outByte;
+// Retrieving user configurations
 let numRotations = localStorage.getItem("currentRotations");
+let objectLength = localStorage.getItem("objectLength");
 let temp = localStorage.getItem("currentTemp");
 
 var myPromise = new Promise(function(resolve, reject){
@@ -56,6 +59,7 @@ function gotData(){
     myArray = currentString.split(",");
     iAngle = parseInt(myArray[0]);
     iDistance = parseInt(myArray[1]);
+    objectLength = 40;
     //let num = 1 + parseInt(myArray[0]);
     /*if(iAngle){
       console.log(iAngle);
@@ -115,9 +119,9 @@ function drawObject() {
   strokeWeight(9);
   stroke(255,10,10); // red color
   pixsDistance = iDistance*5.625; // covers the distance from the sensor from cm to pixels
-  // limiting the range to 40 cms
-  if(iDistance<40){
-    // draws the object according to the angle and the distance
+  // limiting the range to 400 cms
+  if(iDistance<objectLength){
+    // draws the object according to the angle and dimensions specified by the user
   //document.querySelector(".sketch-info").innerHTML+="<p class='object'>[OBJECT DETECTED]</p>";
   line(pixsDistance*cos(radians(iAngle)),-pixsDistance*sin(radians(iAngle)),238*cos(radians(iAngle)),-238*sin(radians(iAngle)));
   }
@@ -133,10 +137,10 @@ function drawText() { // draws the texts on the screen
   //rect(0, 1010, 2650, 540);
   fill(98,245,31);
   textSize(10);
-  text("10cm",285,247);
-  text("20cm",335,247);
-  text("30cm",385,247);
-  text("40cm",435,247);
+  text("100cm",285,247);
+  text("200cm",335,247);
+  text("300cm",385,247);
+  text("400cm",435,247);
   textSize(14);
 
   
@@ -184,6 +188,6 @@ function drawText() { // draws the texts on the screen
 }
 
 var synchroniseDelay = new Promise(function(resolve, reject){
-  // wait for 3 seconds...
+  // wait for 30 milliseconds...
 setTimeout(resolve, 30)
 });

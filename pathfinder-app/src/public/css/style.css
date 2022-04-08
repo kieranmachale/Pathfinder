@@ -49,3 +49,8 @@ input {
 section {
   padding: 50px;
 }
+
+.error-div {
+  display: none;
+  color: red;
+}

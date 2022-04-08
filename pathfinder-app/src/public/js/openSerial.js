@@ -13,10 +13,10 @@ let length = document.querySelector("#modal-length");
 
 if ('serial' in navigator) {
   connectButton.addEventListener('click', function () {
-
+    // Store user's configurations in local storage
     localStorage.setItem("currentRotations", noRotations.value);
     localStorage.setItem("currentTemp", temp.value);
-    localStorage.setItem("objectLength", length.innerHTML);
+    localStorage.setItem("objectLength", length.innerHTML.toString().split(" ")[0]);
 
     if (port) {
       port.close();
