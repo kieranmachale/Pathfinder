@@ -9,6 +9,7 @@ additional instructions have been provided for anyone who wants to run a local v
         <li>Navigate to the project root directory</li>
         <li>Run 'npm i'</li>
         <li>Run 'npm start' or 'npm run dev'</li>
+        <li>Access the local version of the app at http://localhost:3000/</li>
     </ol>
 <h4>Configuration guide</h4>
 <p>Instructions for Arduino hardware config</p>
