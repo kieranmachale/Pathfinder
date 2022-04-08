@@ -32,15 +32,10 @@ void setup() {
   myServo.attach(12); // Defines on which pin is the servo motor attached
 }
 
-// Find the speed of sound in air for a given temperature (in celsius)
-/*float getSpeedofSound(temp){
-  return (331 + (0.61) * temp);  
-}*/
-
 void loop() {
   if(Serial.available() > 0){ // wait for serial event
       temp = Serial.read();
-      //airSpeed = getSpeedofSound(temp);
+      airSpeed = getSOS(temp);
       while(Serial.available() == 0){ }
       rotations = Serial.read();
       while(counter < rotations){ // perform object detection n number of times
@@ -63,6 +58,12 @@ int calculateDistance(){
   duration = pulseIn(echoPin, HIGH); // Reads the echoPin, returns the sound wave travel time in microseconds
   distance= duration*0.034/2;
   return distance;
+}
+
+// Function that calculates the speed of sound in the air for a given temperature (in celsius)
+float getSOS(float temp){
+  float n = 331 + (0.61) * temp;
+  return n; 
 }
 
 void doScan(){

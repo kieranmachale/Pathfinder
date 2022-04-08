@@ -41,6 +41,10 @@ async function handleDOMUpdates(userId, token) {
     })
     .then(data => {
 
+        if(data.length < 1){
+            document.querySelector(".empty").classList.remove('content');
+        }
+
         // Update the DOM
         for(let i = 0; i < data.length; i++){
             let newGridItem = `<div class="grid-item">
@@ -53,6 +57,7 @@ async function handleDOMUpdates(userId, token) {
             <button class="updateBtn">UPDATE</button>
             <button class="delBtn">DELETE</button>
             </div>`;
+            document.querySelector(".empty").classList.add("content");
             document.querySelector(".grid-container").innerHTML += newGridItem;
         }
 
@@ -62,6 +67,7 @@ async function handleDOMUpdates(userId, token) {
             document.querySelector(".grid-container").style.height = "80vh";
 
         }
+        //console.log(data);
 
         // Set event listeners for the buttons
         setEventListeners();
@@ -113,6 +119,7 @@ async function createNewProject(){
     })
     .then(() => {
         setEventListeners();
+        document.querySelector(".empty").classList.add("content");
         document.querySelector(".modal-bg").classList.remove("bg-active"); // Close the modal view
     })
     .catch(err => {

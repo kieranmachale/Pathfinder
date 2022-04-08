@@ -231,6 +231,30 @@ table {
   padding-top: 4px;
 }
 
+.empty {
+  margin: auto;
+  margin-top: 100px;
+  text-align: center;
+  width: 400px;
+  border: 1px solid grey;
+  border-radius: 3rem;
+  padding: 40px;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+#mkt-link {
+  text-decoration: none;
+}
+
+#mkt-link:hover {
+  color: #0275d8;
+}
+
+.content {
+  visibility: hidden;
+  display: none;
+}
+
 .slider {
   -webkit-appearance: none;
   width: 100%;
