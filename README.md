@@ -2,13 +2,20 @@
 
 <h2>Instructions for use</h2>
 <p><e>NOTE:</e> The easiest way to use this application is to simply visit the URL below, however
-additional instructinos have been provided for anyone who wants to run a local version of the app</p>
+additional instructions have been provided for anyone who wants to run a local version of the app</p>
 <p>Pathfinder has been deployed using the Heroku cloud platform and can be found at this URL:</p>
 <b>https://pathfinder-heroku.herokuapp.com/</b><br><hr>
     <ol>
         <li>Navigate to the project root directory</li>
         <li>Run 'npm i'</li>
         <li>Run 'npm start' or 'npm run dev'</li>
+    </ol>
+<h4>Configuration guide</h4>
+<p>Instructions for Arduino hardware config</p>
+    <ol>
+        <li>Connect Servo to digital pin 12</li>
+        <li>Trig pin to digital pin 10</li>
+        <li>Echo pin to digital pin 11</li>
     </ol>
 
 <br>
