@@ -28,7 +28,7 @@ async function handleDOMUpdates(userId, token) {
     /* Flush the DOM */
     document.querySelector(".grid-container").innerHTML = ' ';
 
-    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${userId}`, {
+    const response = fetch(`http://localhost:3000/api/project/${userId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ async function createNewProject(){
     let widthValue = parseFloat(inputWidth.value);
     let lengthValue = parseFloat(inputLength.value);
 
-    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/`, {
+    const response = fetch(`http://localhost:3000/api/project/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ async function createNewProject(){
 
 async function deleteProject(projectId){
 
-    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${projectId}`, {
+    const response = fetch(`http://localhost:3000/api/project/${projectId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ async function deleteProject(projectId){
 async function getProjectInfo(projectId){
     //console.log(projectId);
 
-    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${userId}/${projectId}`, {
+    const response = fetch(`http://localhost:3000/api/project/${userId}/${projectId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -182,7 +182,7 @@ async function getProjectInfo(projectId){
 
 async function updateProject(projectId){
     localStorage.setItem("currentProjectId", projectId);
-    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${userId}/${projectId}`, {
+    const response = fetch(`http://localhost:3000/api/project/${userId}/${projectId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -208,7 +208,7 @@ async function updateProject(projectId){
 }
 
 async function doProjectPatch(projectId){
-    const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/project/${projectId}`, {
+    const response = fetch(`http://localhost:3000/api/project/${projectId}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',

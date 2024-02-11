@@ -15,7 +15,7 @@
       async function getUserInfo() {
           let uid = localStorage.uid;
           let token = localStorage.token;
-          const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/user/${uid}`, {
+          const response = fetch(`http://localhost:3000/api/user/${uid}`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',

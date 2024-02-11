@@ -4,7 +4,7 @@
 <p><e>NOTE:</e> The easiest way to use this application is to simply visit the URL below, however
 additional instructions have been provided for anyone who wants to run a local version of the app</p>
 <p>Pathfinder has been deployed using the Heroku cloud platform and can be found at this URL:</p>
-<b>https://pathfinder-heroku.herokuapp.com/</b><br><hr>
+<b>http://localhost:3000/</b><br><hr>
     <ol>
         <li>Navigate to the project root directory</li>
         <li>Run 'npm i'</li>

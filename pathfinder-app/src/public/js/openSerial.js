@@ -32,7 +32,7 @@ if ('serial' in navigator) {
       }else if(normalRadioButton.checked==true){
         getReader();
       }else{
-        window.open('https://pathfinder-heroku.herokuapp.com/sketch', '_blank');
+        window.open('http://localhost:3000/sketch', '_blank');
       }
     }
   });

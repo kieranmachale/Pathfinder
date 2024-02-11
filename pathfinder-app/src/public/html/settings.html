@@ -148,7 +148,7 @@
             let userId = localStorage.getItem("uid");
             let token = localStorage.getItem("token");
 
-            const response = fetch(`https://pathfinder-heroku.herokuapp.com/api/user/${userId}`, {
+            const response = fetch(`http://localhost:3000/api/user/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
